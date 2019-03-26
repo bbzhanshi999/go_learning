@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"math"
 	"strconv"
 	"strings"
@@ -18,7 +19,24 @@ func main() {
 	// hex2byte(fmt.Sprintf("%p", intP1))
 	// println(strings.Join([]string{"a", "b"}, ""))
 	// println(7 / 3)
-	hex2byte("0x17")
+	//hex2byte("0x17")
+
+	s := "good bye"
+
+	sp1 := &s
+	sp2 := &s
+
+	s2 := "hello go pointer"
+	sp1 = &s2
+
+	fmt.Printf("sp1 address is %p and value is %v\n", sp1, *sp1)
+	fmt.Printf("sp2 address is %p and value is %v\n", sp2, *sp2)
+	fmt.Printf("s address is %p and value is %v\n", &s, s)
+
+	// ptr1 :=&10 这种写法是不行的，go 不允许直接获得匿名变量或者匿名常量的地址，必须先声明变量和常量后在通过&赋值给指针类型
+	inta := 10
+	ptr1 := &inta
+	println(ptr1)
 }
 
 func hex2byte(hexStr string) string {
