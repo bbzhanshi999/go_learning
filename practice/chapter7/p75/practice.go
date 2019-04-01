@@ -1,16 +1,26 @@
 package main
 
-var sl []byte = []byte{'b', 'b'}
+import "fmt"
+
+var sl []byte = []byte{'y', 'z'}
 
 func main() {
 	byteArr := []byte{'a', 'b', 'c'}
 
-	Append(sl, byteArr)
-
+	fmt.Printf("%s", Append(sl, byteArr))
+	
 }
 
 func Append(slice []byte, data []byte) []byte {
 	s := make([]byte, len(slice)+len(data))
-	// todo
+
+	for i := 0; i < len(slice); i++ {
+		s[i] = slice[i]
+	}
+
+	for i := len(slice); i < len(s); i++ {
+		s[i] = data[i-len(slice)]
+	}
+
 	return s
 }
